@@ -1,10 +1,10 @@
 {
   "name": "timestamp-microservice",
   "version": "1.0.0",
-  "description": "This is a FreeCodeCamp challange",
+  "description": "This is a FreeCodeCamp challenge",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/Lucas24D/timestamp-microservice#readme",
   "devDependencies": {
-    "express": "^4.17.1",
-    "nodemon": "^2.0.7"
+    "express": "^4.17.1"
   }
 }
