@@ -1,2 +1,2 @@
-# timestamp-microservice
-This is a FreeCodeCamp challange
+# Timestamp Microservice
+This is a FreeCodeCamp challenge
