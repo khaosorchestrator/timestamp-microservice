@@ -1,8 +1,7 @@
 const express = require('express');
-const { router } = require('./routes');
 const app = express();
+const { setUpRoutes } = require('./config/routes');
 
 app.use(express.json());
-app.use(router);
-
+setUpRoutes(app);
 module.exports = app;
