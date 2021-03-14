@@ -1,17 +1,23 @@
 const timestampController = (req, res) => {
-  const { date_string } = req.params;
+  let resObject = {};
 
-  if (date_string[4] != '-') {
-    const timestamp = new Date(date_string * 1000).toString();
+  let { date_string } = req.params;
 
-    return res.json({ unix: Number(date_string), utc: timestamp });
+  if (date_string.includes('-')) {
+    resObject['utc'] = new Date(date_string).toUTCString();
+    resObject['unix'] = Math.round(new Date(date_string).getTime());
+  } else {
+    date_string = parseInt(date_string);
+
+    resObject['utc'] = new Date(date_string).toUTCString();
+    resObject['unix'] = Math.round(new Date(date_string).getTime());
   }
 
-  const unixTimestamp = Math.round(new Date(date_string).getTime() / 1000);
+  if (!resObject['unix'] || !resObject['utc']) {
+    return res.json({ error: 'Invalid Date' });
+  }
 
-  const timestamp = new Date(date_string).toString();
-
-  return res.json({ unix: unixTimestamp, utc: timestamp });
+  return res.json(resObject);
 };
 
 module.exports = timestampController;
